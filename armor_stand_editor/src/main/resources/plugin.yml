@@ -1,0 +1,33 @@
+name: ${project.name}
+authors: [Virizion, xFier, Lukire]
+version: ${project.version}
+description: ${project.description}
+main: me.virizion.armorstandeditor.ArmorStandEditor
+commands:
+  armorstandeditor:
+    description: Get info about the plugin.
+    usage: /<command>
+    permission: armorstandeditor.command.info
+    aliases: [ase]
+  editarmorstand:
+    description: Open the edit GUI for the nearest armor stand.
+    usage: /<command>
+    permission: armorstandeditor.command.edit
+    aliases: [eas]
+permissions:
+  armorstandeditor.*:
+    description: All permission nodes for this plugin.
+    default: op
+    children:
+      armorstandeditor.command.info: true
+      armorstandeditor.command.edit: true
+      armorstandeditor.edit: true
+  armorstandeditor.command.info:
+    description: Allows you to view info about the plugin.
+    default: op
+  armorstandeditor.command.edit:
+    description: Allows you to edit the nearest armor stand.
+    default: op
+  armorstandeditor.edit:
+    description: Allows you to shift-click an armor stand to edit it.
+    default: op
