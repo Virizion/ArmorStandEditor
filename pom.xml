@@ -21,6 +21,7 @@
   <modules>
     <module>armor_stand_editor</module>
     <module>armor_stand_editor_nms</module>
+    <module>armor_stand_editor_v1_13_R1</module>
     <module>armor_stand_editor_v1_12_R1</module>
 	<module>armor_stand_editor_v1_11_R1</module>
 	<module>armor_stand_editor_v1_10_R1</module>
