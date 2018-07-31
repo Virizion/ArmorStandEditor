@@ -14,9 +14,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.virizion.armorstandeditor.commands.ArmorStandEditorCommand;
 import me.virizion.armorstandeditor.commands.EditArmorStandCommand;
 import me.virizion.armorstandeditor.listeners.ArmorStandClickListener;
+import me.virizion.armorstandeditor.listeners.JoinUpdateMessageListener;
 import me.virizion.armorstandeditor.nms.AnvilGUI;
 import me.virizion.armorstandeditor.nms.DisabledSlots;
 import me.virizion.armorstandeditor.nms.Invulnerability;
+import me.virizion.armorstandeditor.updater.Updater;
 
 public class ArmorStandEditor extends JavaPlugin
 {
@@ -27,10 +29,20 @@ public class ArmorStandEditor extends JavaPlugin
 	private boolean isOffHandSupported;
 	private boolean isMarkerSupported;
 	private Map<Player, ArmorStand> editingArmorStands = new HashMap<>();
+	private Updater updater = new Updater(this);
 
 	@Override
 	public void onEnable()
 	{
+		saveDefaultConfig();
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+		
+		if (getConfig().getBoolean("check-updates"))
+		{
+			this.updater.checkVersion(getServer().getConsoleSender());
+		}
+		
 		loadDisabledSlots();
 		loadAnvilGUIClass();
 		loadInvulnerability();
@@ -41,6 +53,7 @@ public class ArmorStandEditor extends JavaPlugin
 		getCommand("editarmorstand").setExecutor(new EditArmorStandCommand(this));
 		
 		getServer().getPluginManager().registerEvents(new ArmorStandClickListener(this), this);
+		getServer().getPluginManager().registerEvents(new JoinUpdateMessageListener(this), this);
 	}
 
 	private void loadDisabledSlots()
@@ -144,6 +157,11 @@ public class ArmorStandEditor extends JavaPlugin
 	public Map<Player, ArmorStand> getEditingArmorStands()
 	{
 		return this.editingArmorStands;
+	}
+
+	public Updater getUpdater()
+	{
+		return this.updater;
 	}
 
 }

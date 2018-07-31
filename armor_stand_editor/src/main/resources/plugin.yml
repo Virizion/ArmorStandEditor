@@ -22,6 +22,7 @@ permissions:
       armorstandeditor.command.info: true
       armorstandeditor.command.edit: true
       armorstandeditor.edit: true
+      armorstandeditor.updatemessage: true
   armorstandeditor.command.info:
     description: Allows you to view info about the plugin.
     default: op
@@ -30,4 +31,7 @@ permissions:
     default: op
   armorstandeditor.edit:
     description: Allows you to shift-click an armor stand to edit it.
+    default: op
+  armorstandeditor.updatemessage:
+    description: Allows you to receive update messages on join.
     default: op

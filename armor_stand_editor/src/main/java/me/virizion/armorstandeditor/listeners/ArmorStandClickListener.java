@@ -39,6 +39,11 @@ public class ArmorStandClickListener implements Listener
 	@EventHandler
 	public void onArmorStandClick(PlayerInteractAtEntityEvent event)
 	{
+		if (!this.armorStandEditor.getConfig().getBoolean("shift-right-click-enabled"))
+		{
+			return;
+		}
+		
 		if (!event.getPlayer().isSneaking())
 		{
 			return;
