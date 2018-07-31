@@ -5,7 +5,7 @@
   <artifactId>armor_stand_editor_parent</artifactId>
   <name>ArmorStandEditorParent</name>
   <description>A plugin that can manipulate armor stands in a GUI.</description>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>pom</packaging>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
