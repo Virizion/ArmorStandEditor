@@ -36,7 +36,7 @@ public class ArmorStandClickListener implements Listener
 		}, 0, 20);
 	}
 
-	@EventHandler
+	@EventHandler(ignoreCancelled = true)
 	public void onArmorStandClick(PlayerInteractAtEntityEvent event)
 	{
 		if (!this.armorStandEditor.getConfig().getBoolean("shift-right-click-enabled"))
@@ -70,7 +70,7 @@ public class ArmorStandClickListener implements Listener
 		new ArmorStandGUI(this.armorStandEditor, event.getPlayer(), (ArmorStand) event.getRightClicked()).open();
 	}
 
-	@EventHandler
+	@EventHandler(ignoreCancelled = true)
 	public void onPlayerArmorStandManipulate(PlayerArmorStandManipulateEvent event)
 	{
 		if (this.armorStandEditor.getEditingArmorStands().containsValue(event.getRightClicked()))
