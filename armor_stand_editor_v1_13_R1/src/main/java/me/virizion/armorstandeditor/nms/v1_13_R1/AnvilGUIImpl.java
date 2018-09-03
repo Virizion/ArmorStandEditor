@@ -89,7 +89,7 @@ public class AnvilGUIImpl extends ContainerAnvil implements AnvilGUI, Listener
 		this.windowId = containerCount;
 		
 		//Set the anvil inventory to the opened inventory
-		entityPlayer.playerConnection.sendPacket(new PacketPlayOutOpenWindow(containerCount, "minecraft:anvil", new ChatMessage("Repairing")));
+		entityPlayer.playerConnection.sendPacket(new PacketPlayOutOpenWindow(containerCount, "minecraft:anvil", new ChatMessage("container.repair")));
 		entityPlayer.activeContainer = this;
 		
 		addSlotListener(entityPlayer);
