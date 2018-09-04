@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
@@ -36,7 +37,7 @@ public class ArmorStandClickListener implements Listener
 		}, 0, 20);
 	}
 
-	@EventHandler(ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onArmorStandClick(PlayerInteractAtEntityEvent event)
 	{
 		if (!this.armorStandEditor.getConfig().getBoolean("shift-right-click-enabled"))
@@ -70,7 +71,7 @@ public class ArmorStandClickListener implements Listener
 		new ArmorStandGUI(this.armorStandEditor, event.getPlayer(), (ArmorStand) event.getRightClicked()).open();
 	}
 
-	@EventHandler(ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPlayerArmorStandManipulate(PlayerArmorStandManipulateEvent event)
 	{
 		if (this.armorStandEditor.getEditingArmorStands().containsValue(event.getRightClicked()))
